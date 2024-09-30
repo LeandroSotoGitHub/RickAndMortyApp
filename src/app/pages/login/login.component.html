@@ -1,0 +1,45 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-dark">
+    <div class="row w-100">
+      <div class="col-md-6 d-none d-md-block p-0 imgContainer">
+        <img src="../../../assets/login.png" alt="Rick and Morty" class="img-fluid">
+      </div>
+  
+      <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px; background-color: #333;">
+          <h5 class="text-center mb-4 text-white">Sign In</h5>
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label text-white">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="email@example.com" formControlName="mail" [ngClass]="{'is-invalid': hasError('mail')}">
+              <p *ngIf="hasError('mail')" class="text-danger"> {{ getErrorMessage('mail') }}</p>
+            </div>
+  
+            <div class="mb-3">
+              <label for="password" class="form-label text-white">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': hasError('password')}">
+              <p *ngIf="hasError('password')" class="text-danger"> {{ getErrorMessage('password') }}</p>
+            </div>
+  
+            <div class="form-check mb-3">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label text-white" for="rememberMe">Remember me</label>
+            </div>
+  
+            <button type="submit" class="btn btn-primary w-100">Sign In</button>
+  
+            <div class="mt-3 text-center">
+              <a class="text-white cursor-pointer">Forgot password?</a>
+            </div>
+  
+            <div class="mt-2 text-center">
+              <span class="text-white">New around here? </span><a class="text-primary cursor-pointer"  (click)="register()">Sign up</a>
+            </div>
+          </form>
+          <div *ngIf="errorMessage" class="text-danger">
+            {{ errorMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

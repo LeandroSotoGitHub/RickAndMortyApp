@@ -1,0 +1,32 @@
+<div class="container-fluid bg-secondary" style="min-height: 100vh;" *ngIf="dataOneCharacter">
+    <div class="row px-5 p-5">
+        <div class="col-md-3 bg-dark p-3 m-2" style="height: fit-content;">
+            <img [src]="dataOneCharacter.image" [alt]="dataOneCharacter.name" class="img-fluid rounded">
+            <div class="mt-3 text-light">
+                <h4 class="border-bottom pb-2 fs-2">Character Info</h4>
+                <p><strong>Name:</strong> {{ dataOneCharacter.name }}</p>
+                <p [ngClass]="getStatusClass( dataOneCharacter.status)"><strong>Status:</strong> {{ dataOneCharacter.status | status }}</p>
+                <p><strong>Species:</strong> {{ dataOneCharacter.species }}</p>
+                <p><strong>Gender:</strong> {{ dataOneCharacter.gender | gender }}</p>
+                <p><strong>Origin:</strong> {{ dataOneCharacter.origin.name }}</p>
+                <p><strong>Location:</strong> {{ dataOneCharacter.location.name }}</p>
+            </div>
+        </div>
+        
+        <div class="col-md-7 bg-dark text-light p-3 m-2" style="height: fit-content;">
+            <h4 class="border-bottom pb-2 fs-2">List of Episodes appearances</h4>
+            
+            
+            <div style="max-height: 80vh; overflow-y: hidden;" [style.overflow-y]="showMoreEpisodes ? 'auto' : 'hidden'">
+                <p *ngFor="let episode of displayedEpisodes" class="mb-1">
+                    <a href="#" class="text-primary fs-5">{{ episode }}</a>
+                </p>
+            </div>
+
+            
+            <div *ngIf="showLoadMoreButton">
+                <button class="btn btn-primary mt-3" (click)="loadMoreEpisodes()">Cargar más episodios</button>
+            </div>
+        </div>
+    </div>
+</div>

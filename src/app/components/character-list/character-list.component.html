@@ -1,0 +1,19 @@
+<div class="container-fluid bg-dark text-light py-4 p-5">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+      <div class="col" *ngFor="let character of characters">
+        <div class="card bg-secondary" [routerLink]="['/characters', character.id]">
+          <img src="{{character.image}}" class="card-img-top" alt="{{character.name}}">
+          <div class="card-body">
+            <p class="card-text text-light">{{ character.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Paginador como componente -->
+    <app-paginator 
+      [currentPage]="currentPage" 
+      [totalPages]="totalPages" 
+      (pageChange)="loadCharacters($event)">
+    </app-paginator>
+  </div>
