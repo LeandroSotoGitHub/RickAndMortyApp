@@ -8,12 +8,12 @@ import { RickMortyService } from '../../Services/rick-morty.service';
 })
 export class CharacterListComponent {
   characters: any[] = []
-  searchResults: any[] = [] // Resultados de búsqueda
-  searchMode: boolean = false // Indica si estamos en modo búsqueda
   next: string | null = null
   prev: string | null = null
   currentPage: number = 1
   totalPages: number = 1
+  showPaginator: boolean = true
+  infoMessage?: string
 
   constructor(private RickMortyService: RickMortyService){}
   
@@ -33,5 +33,11 @@ export class CharacterListComponent {
 
   updateCharacterList(characters: any[]): void {
     this.characters = characters;
+    this.showPaginator = false
+    this.currentPage = 1
+  }
+
+  characterNotFound(infoMessage: string){
+    this.infoMessage = infoMessage
   }
 }

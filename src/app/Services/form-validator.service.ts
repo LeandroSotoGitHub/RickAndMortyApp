@@ -12,8 +12,7 @@ export class FormValidatorService {
     email: 'El formato del correo es incorrecto',
     minlength: 'Ingresa mas caracteres',
     maxlength: 'Se supero el maximo de caracteres',
-    mismatch: 'Las contraseñas no coinciden',
-    exactLength: 'El campo debe tener exactamente 4 caracteres' 
+    passwordsMismatch: 'Las contraseñas no coinciden',
   }
 
   getErrorMessage(form: FormGroup, controlName: string): string {

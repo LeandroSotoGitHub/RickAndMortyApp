@@ -5,9 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CharacterListComponent } from './components/character-list/character-list.component';
-import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
-import { HomeComponent } from './pages/home/home.component';
+import { CharacterListComponent } from './pages/character-list/character-list.component';
+import { CharacterDetailComponent } from './pages/character-detail/character-detail.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { GenderPipe } from './pipes/gender.pipe';
 import { StatusPipe } from './pipes/status.pipe';
@@ -23,7 +22,6 @@ import { SearchCharactersByNameComponent } from './components/search-characters-
     AppComponent,
     CharacterListComponent,
     CharacterDetailComponent,
-    HomeComponent,
     Error404Component,
     GenderPipe,
     StatusPipe,

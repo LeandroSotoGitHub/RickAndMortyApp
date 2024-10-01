@@ -32,8 +32,8 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="repeatPassword" class="form-label">Repeat Password</label>
-                                <input type="password" class="form-control custom-input" id="repeatPassword" placeholder="Repeat Password" formControlName="password2"  [ngClass]="{'is-invalid': hasError('password2')}" >
-                                <p *ngIf="hasError('password2')" class="text-danger"> {{ getErrorMessage('password2') }}</p>
+                                <input type="password" class="form-control custom-input" id="repeatPassword" placeholder="Repeat Password" formControlName="confirmPassword"  [ngClass]="{'is-invalid': hasError('password2')}" >
+                                <p *ngIf="hasError('confirmPassword')" class="text-danger"> {{ getErrorMessage('confirmPassword') }}</p>
                             </div>
 
                         </div>
@@ -81,6 +81,8 @@
                         <div *ngIf="successMessage || errorMessage" class="success-message">
                             {{ successMessage || errorMessage }}
                         </div>
+                        
+                        <p *ngIf="registerForm.hasError('passwordsMismatch') && registerForm.get('confirmPassword')?.touched" class="text-danger">Las contraseñas no coinciden.</p>
                     </form>
                     
                 </div>

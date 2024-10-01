@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormValidatorService } from 'src/app/Services/form-validator.service';
 import { AuthService } from '../../Services/auth.service';
-import { passwordMatchValidator } from '../../validators/validators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerAuthApiService } from 'src/app/Services/error-handler-auth-api.service';
+import { matchingPasswords } from 'src/app/validators/validators';
 
 @Component({
   selector: 'app-register',
@@ -26,16 +26,16 @@ export class RegisterComponent {
   ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
-      mail: ['', [Validators.required, Validators.email,  Validators.minLength(10), Validators.maxLength(50)]],
+      mail: ['', [Validators.required, Validators.email, Validators.minLength(10), Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
-      password2: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
       address: this.fb.group({
         street: ['', [Validators.required, Validators.maxLength(50)]],
         city: ['', [Validators.required, Validators.maxLength(50)]],
         country: ['Argentina', [Validators.required, Validators.maxLength(50)]],
         cp: ['', [Validators.required, Validators.maxLength(4), Validators.minLength(4)]],
       })
-    })
+    }, { validators: matchingPasswords('password') });
   }
   
   

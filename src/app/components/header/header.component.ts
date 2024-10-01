@@ -52,4 +52,8 @@ export class HeaderComponent {
       });
     }
   }
+
+  reloadPage() {
+    window.location.reload();
+  }
 }

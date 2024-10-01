@@ -11,6 +11,8 @@ export class SearchCharactersByNameComponent {
   characterSearched?: []
   searchForm: FormGroup
   @Output() emitCharacterSearched = new EventEmitter<any>()
+  infoMessage?: string
+  @Output() emitInfoMessage = new EventEmitter<any>()
 
   
   constructor (
@@ -31,10 +33,12 @@ export class SearchCharactersByNameComponent {
           console.log(this.characterSearched)
         },
         error: (error) => {
-          console.error('Personaje no encontrado', error);
-          this.characterSearched = [];
-          this.emitCharacterSearched.emit([]);
-        }
+          console.error('Personaje no encontrado', error)
+          this.characterSearched = []
+          this.infoMessage = 'Este personaje no existe'
+          this.emitInfoMessage.emit(this.infoMessage) 
+          this.emitCharacterSearched.emit(this.characterSearched)
+        }        
       });
     }
   }
