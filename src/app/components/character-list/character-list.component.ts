@@ -8,10 +8,12 @@ import { RickMortyService } from '../../Services/rick-morty.service';
 })
 export class CharacterListComponent {
   characters: any[] = []
-  next: string | null = null;
-  prev: string | null = null;
-  currentPage: number = 1;
-  totalPages: number = 1;
+  searchResults: any[] = [] // Resultados de búsqueda
+  searchMode: boolean = false // Indica si estamos en modo búsqueda
+  next: string | null = null
+  prev: string | null = null
+  currentPage: number = 1
+  totalPages: number = 1
 
   constructor(private RickMortyService: RickMortyService){}
   
@@ -27,5 +29,9 @@ export class CharacterListComponent {
       this.totalPages = data.info.pages;
       this.currentPage = page;
     });
+  }
+
+  updateCharacterList(characters: any[]): void {
+    this.characters = characters;
   }
 }

@@ -15,6 +15,10 @@ export class RickMortyService {
     return this.http.get<any>(`${this.urlApi}/character?page=${page}`)
   }
 
+  public getCharactersByName(name: string): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/character/?name=${name}`);
+  }
+  
   public paginate(url: string): Observable<any> {
     return this.http.get<any>(url);
   }

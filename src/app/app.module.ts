@@ -16,6 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { SearchCharactersByNameComponent } from './components/search-characters-by-name/search-characters-by-name.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HeaderComponent } from './components/header/header.component';
     PaginatorComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchCharactersByNameComponent
   ],
   imports: [
     BrowserModule,

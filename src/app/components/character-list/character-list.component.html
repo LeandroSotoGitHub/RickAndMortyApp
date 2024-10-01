@@ -1,5 +1,11 @@
 <div class="container-fluid bg-dark text-light py-4 p-5">
-  <app-header [currentPage]="currentPage" [totalPages]="totalPages"></app-header>
+  <app-header 
+    [currentPage]="currentPage" 
+    [totalPages]="totalPages">
+  </app-header>
+  <app-search-characters-by-name
+  (emitCharacterSearched)="updateCharacterList($event)">
+  </app-search-characters-by-name>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
       <div class="col" *ngFor="let character of characters">
         <div class="card shadow-lg" [routerLink]="['/characters', character.id]">

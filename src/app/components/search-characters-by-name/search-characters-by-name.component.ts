@@ -1,26 +1,19 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RickMortyService } from 'src/app/Services/rick-morty.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-search-characters-by-name',
+  templateUrl: './search-characters-by-name.component.html',
+  styleUrls: ['./search-characters-by-name.component.css']
 })
-export class HeaderComponent {
-  loginData = JSON.parse(sessionStorage.getItem('loginData') || '{}');
-  userName = this.loginData.user.name
+export class SearchCharactersByNameComponent {
   characterSearched?: []
-  @Input() currentPage: number = 1;
-  @Input() totalPages: number = 1;
   searchForm: FormGroup
   @Output() emitCharacterSearched = new EventEmitter<any>()
 
-
-
+  
   constructor (
-    private router: Router, 
     private RickMortyService: RickMortyService,
     private fb: FormBuilder
   ){
@@ -28,13 +21,6 @@ export class HeaderComponent {
       searcher: ['']
     })
   }
-
-
-  logout(){
-    sessionStorage.removeItem('loginToken')
-    this.router.navigate(['/login'])
-  }
-  
   searchCharactersByName() {
     const searchValue = this.searchForm.get('searcher')?.value; // Obtiene el valor del input
     if (searchValue) {
