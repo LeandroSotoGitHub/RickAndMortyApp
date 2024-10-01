@@ -3,6 +3,7 @@
   }
 
 .card {
+    background-color: #343a40;
     border: none;
     transition: transform 0.2s;
 }

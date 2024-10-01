@@ -42,6 +42,7 @@ export class LoginComponent {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response) => {
           sessionStorage.setItem('loginToken', response.data.token)
+          sessionStorage.setItem('loginData', JSON.stringify(response.data))
           this.router.navigate([''])
           console.log('login exitoso:', response);
         },
