@@ -1,0 +1,42 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark py-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Rick & Morty</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/characters">Characters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Episodes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Locations</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link">Profile user</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-danger">Log Out</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Formulario de búsqueda fuera del Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-md-4">
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" name="search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -48,6 +48,7 @@ export class RegisterComponent {
           sessionStorage.setItem('registerToken', response.data.user.id)
           this.successMessage = 'Usuario creado correctamente'
           console.log('Registro exitoso:', response)
+          this.router.navigate(['login'])
         },
         error: (error: HttpErrorResponse) => {
           if (error instanceof HttpErrorResponse && error.error && error.error.header) {

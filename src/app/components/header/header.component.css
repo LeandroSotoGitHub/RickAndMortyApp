@@ -1,0 +1,45 @@
+nav {
+    background-color: #343a40;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .btn-outline-success {
+    color: #fff;
+    border-color: #28a745;
+  }
+  
+  .btn-outline-danger {
+    color: #fff;
+    border-color: #dc3545;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+  }
+
+
+  .navbar {
+    padding-bottom: 0; /* Ajuste para reducir espacio si es necesario */
+  }
+  
+  .container-fluid.bg-dark.py-3 {
+    padding-top: 1.5rem;
+  }
+  
+  .form-control {
+    border-color: #6c757d;
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+  }
