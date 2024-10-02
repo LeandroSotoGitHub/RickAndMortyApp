@@ -20,9 +20,9 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formValidator: FormValidatorService,
+    private formValidatorService: FormValidatorService,
     private authService: AuthService,
-    private errorHandler: ErrorHandlerAuthApiService
+    private errorHandlerService: ErrorHandlerAuthApiService
   ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
@@ -51,16 +51,14 @@ export class RegisterComponent {
           this.router.navigate(['login'])
         },
         error: (error: HttpErrorResponse) => {
-          if (error instanceof HttpErrorResponse && error.error && error.error.header) {
+          if (error instanceof HttpErrorResponse) {
             const resultCode = error.error.header.resultCode
-            this.errorMessage = this.errorHandler.getErrorMessage(resultCode)
+            this.errorMessage = this.errorHandlerService.getErrorMessage(resultCode)
           } else {
             this.errorMessage = 'Ocurrió un error inesperado. Por favor intenta nuevamente.'
           }
-          console.log('Error en el registro:', error)
         }
       })
-      console.log(this.registerForm)
     } else {
       this.errorMessage = 'Corrija los campos'
       this.registerForm.markAllAsTouched()
@@ -69,11 +67,11 @@ export class RegisterComponent {
   }
   
   getErrorMessage(controlName: string): string{
-    return this.formValidator.getErrorMessage(this.registerForm, controlName)
+    return this.formValidatorService.getErrorMessage(this.registerForm, controlName)
   }
 
   hasError(controlName: string): boolean {
-    return this.formValidator.hasError(this.registerForm, controlName);
+    return this.formValidatorService.hasError(this.registerForm, controlName);
   }
 
   back(){

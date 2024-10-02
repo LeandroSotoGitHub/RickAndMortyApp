@@ -1,4 +1,4 @@
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-dark">
+<div class="container-fluid d-flex justify-content-center align-items-center bg-dark" style="height: fit-content; min-height: 100vh;">
     <div class="row w-100">
       <div class="col-md-6 d-none d-md-block p-0 imgContainer">
         <img src="../../../assets/login.png" alt="Rick and Morty" class="img-fluid">
@@ -10,14 +10,14 @@
 
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
-              <label for="email" class="form-label text-white">Email address</label>
-              <input type="email" class="form-control" id="email" placeholder="email@example.com" formControlName="mail" [ngClass]="{'is-invalid': hasError('mail')}">
+              <label for="email" class="form-label text-primary ">Email address</label>
+              <input type="email" class="form-control custom-input" id="email" placeholder="email@example.com" formControlName="mail" [ngClass]="{'is-invalid': hasError('mail')}">
               <p *ngIf="hasError('mail')" class="text-danger"> {{ getErrorMessage('mail') }}</p>
             </div>
   
             <div class="mb-3">
-              <label for="password" class="form-label text-white">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': hasError('password')}">
+              <label for="password" class="form-label text-primary">Password</label>
+              <input type="password" class="form-control custom-input" id="password" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': hasError('password')}">
               <p *ngIf="hasError('password')" class="text-danger"> {{ getErrorMessage('password') }}</p>
             </div>
   

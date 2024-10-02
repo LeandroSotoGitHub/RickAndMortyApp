@@ -13,6 +13,6 @@ export class ErrorHandlerAuthApiService {
   };
 
   getErrorMessage(code: number): string {
-    return this.errorMessages[code] || 'Ocurrió un error inesperado.';
+    return this.errorMessages[code] || 'Ocurrió un error inesperado.'
   }
 }

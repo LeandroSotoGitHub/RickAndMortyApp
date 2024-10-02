@@ -14,3 +14,18 @@ a{
 .custom-input.is-valid {
     border-color: green; /* Color del borde en caso de éxito */
 }
+.custom-input {
+    background-color: #333; 
+    color: white;
+    border: 1px solid #555;
+}
+
+.custom-input::placeholder {
+    color: #bbb; 
+}
+
+.custom-input:focus {
+    background-color: #444;
+    border-color: #007bff;
+    outline: none;
+}

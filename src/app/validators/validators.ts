@@ -1,20 +1,22 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function matchingPasswords(passwordControlName: string): ValidatorFn {
+  
   return (control: AbstractControl): ValidationErrors | null => {
-    const passwordControl = control.get(passwordControlName); // Obtiene el control de contraseña
-    const confirmPasswordControl = control.get('confirmPassword'); // Obtiene el control de confirmación
-
+    const passwordControl = control.get(passwordControlName)
+    const confirmPasswordControl = control.get('confirmPassword')
     if (!passwordControl || !confirmPasswordControl) {
-      return null; // No hay controles para validar
+      return null
     }
-
-    // Si ambos controles están vacíos, no se debe marcar como error
-    if (passwordControl.value === '' && confirmPasswordControl.value === '') {
-      return null;
+    const password = passwordControl.value
+    
+    const confirmPassword = confirmPasswordControl.value
+    if (!password || !confirmPassword) {
+      return null // Si uno de los campos está vacío, no validar
     }
-
-    // Retorna error si las contraseñas no coinciden
-    return passwordControl.value !== confirmPasswordControl.value ? { passwordsMismatch: true } : null;
-  };
+    if (password !== confirmPassword) {
+      return { passwordsMismatch: true } // Error si no coinciden
+    }
+    return null // Las contraseñas coinciden, no hay error
+  }
 }

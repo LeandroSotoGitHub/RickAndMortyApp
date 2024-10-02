@@ -18,9 +18,9 @@ export class LoginComponent {
   constructor(
     private router: Router, 
     private fb:FormBuilder,
-    private formValidator: FormValidatorService,
+    private formValidatorService: FormValidatorService,
     private authService: AuthService,
-    private errorHandler: ErrorHandlerAuthApiService
+    private errorHandlerService: ErrorHandlerAuthApiService
   ){
     this.loginForm = this.fb.group({
       mail:['',[Validators.required, Validators.email]],
@@ -29,11 +29,11 @@ export class LoginComponent {
   }
 
   getErrorMessage(controlName: string): string{
-    return this.formValidator.getErrorMessage(this.loginForm, controlName)
+    return this.formValidatorService.getErrorMessage(this.loginForm, controlName)
   }
 
   hasError(controlName: string): boolean {
-    return this.formValidator.hasError(this.loginForm, controlName);
+    return this.formValidatorService.hasError(this.loginForm, controlName);
   }
 
 
@@ -47,9 +47,9 @@ export class LoginComponent {
           console.log('login exitoso:', response);
         },
         error: (error: HttpErrorResponse) => {
-          if (error instanceof HttpErrorResponse && error.error && error.error.header) {
+          if (error instanceof HttpErrorResponse) {
             const resultCode = error.error.header.resultCode
-            this.errorMessage = this.errorHandler.getErrorMessage(resultCode)
+            this.errorMessage = this.errorHandlerService.getErrorMessage(resultCode)
           } else {
             this.errorMessage = 'Ocurrió un error inesperado. Por favor intenta nuevamente.'
           }
