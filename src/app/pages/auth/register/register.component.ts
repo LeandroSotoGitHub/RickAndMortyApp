@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FormValidatorService } from 'src/app/Services/form-validator.service';
 import { AuthService } from '../../../Services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorHandlerAuthApiService } from 'src/app/Services/error-handler-auth-api.service';
 import { matchingPasswords } from 'src/app/validators/validators';
 
 @Component({
@@ -22,7 +21,6 @@ export class RegisterComponent {
     private router: Router,
     private formValidatorService: FormValidatorService,
     private authService: AuthService,
-    private errorHandlerService: ErrorHandlerAuthApiService
   ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
@@ -53,7 +51,7 @@ export class RegisterComponent {
         error: (error: HttpErrorResponse) => {
           if (error instanceof HttpErrorResponse) {
             const resultCode = error.error.header.resultCode
-            this.errorMessage = this.errorHandlerService.getErrorMessage(resultCode)
+            this.errorMessage = this.authService.getErrorMessage(resultCode)
           } else {
             this.errorMessage = 'Ocurrió un error inesperado. Por favor intenta nuevamente.'
           }

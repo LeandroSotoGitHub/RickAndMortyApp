@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
-import { ErrorHandlerAuthApiService } from 'src/app/Services/error-handler-auth-api.service';
 import { FormValidatorService } from 'src/app/Services/form-validator.service';
 
 @Component({
@@ -19,8 +18,7 @@ export class LoginComponent {
     private router: Router, 
     private fb:FormBuilder,
     private formValidatorService: FormValidatorService,
-    private authService: AuthService,
-    private errorHandlerService: ErrorHandlerAuthApiService
+    private authService: AuthService
   ){
     this.loginForm = this.fb.group({
       mail:['',[Validators.required, Validators.email]],
@@ -49,7 +47,7 @@ export class LoginComponent {
         error: (error: HttpErrorResponse) => {
           if (error instanceof HttpErrorResponse) {
             const resultCode = error.error.header.resultCode
-            this.errorMessage = this.errorHandlerService.getErrorMessage(resultCode)
+            this.errorMessage = this.authService.getErrorMessage(resultCode)
           } else {
             this.errorMessage = 'Ocurrió un error inesperado. Por favor intenta nuevamente.'
           }
