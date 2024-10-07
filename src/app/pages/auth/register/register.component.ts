@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormValidatorService } from 'src/app/Services/form-validator.service';
-import { AuthService } from '../../Services/auth.service';
+import { AuthService } from '../../../Services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorHandlerAuthApiService } from 'src/app/Services/error-handler-auth-api.service';
 import { matchingPasswords } from 'src/app/validators/validators';

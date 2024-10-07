@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RickMortyService } from '../../Services/rick-morty.service';
+import { RickMortyService } from '../../../Services/rick-morty.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
