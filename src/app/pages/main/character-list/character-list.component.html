@@ -23,7 +23,6 @@
 
 
     <app-paginator 
-      *ngIf="showPaginator"
       [currentPage]="currentPage" 
       [totalPages]="totalPages" 
       (pageChange)="loadCharacters($event)">

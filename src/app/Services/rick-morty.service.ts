@@ -11,12 +11,12 @@ export class RickMortyService {
 
   constructor (private http: HttpClient) { }
 
-  public getCharacters(page: number = 1): Observable<any> {
-    return this.http.get<any>(`${this.urlApi}/character?page=${page}`)
-  }
-
-  public getCharactersByName(name: string): Observable<any> {
-    return this.http.get<any>(`${this.urlApi}/character/?name=${name}`);
+  public getCharacters(page: number = 1, name?: string): Observable<any> {
+    const apiUrl = name 
+      ? `${this.urlApi}/character/?name=${name}&page=${page}`
+      : `${this.urlApi}/character?page=${page}`
+  
+    return this.http.get<any>(apiUrl)
   }
   
   public paginate(url: string): Observable<any> {

@@ -21,7 +21,6 @@ export class HeaderComponent {
 
   constructor (
     private router: Router, 
-    private RickMortyService: RickMortyService,
     private fb: FormBuilder
   ){
     this.searchForm = this.fb.group({
@@ -34,24 +33,7 @@ export class HeaderComponent {
     sessionStorage.removeItem('loginToken')
     this.router.navigate(['/login'])
   }
-  
-  searchCharactersByName() {
-    const searchValue = this.searchForm.get('searcher')?.value; // Obtiene el valor del input
-    if (searchValue) {
-      this.RickMortyService.getCharactersByName(searchValue).subscribe({
-        next: (data: any) => {
-          this.characterSearched = data.results;
-          this.emitCharacterSearched.emit(this.characterSearched);
-          console.log(this.characterSearched)
-        },
-        error: (error) => {
-          console.error('Personaje no encontrado', error);
-          this.characterSearched = [];
-          this.emitCharacterSearched.emit([]);
-        }
-      });
-    }
-  }
+
 
   reloadPage() {
     window.location.reload();

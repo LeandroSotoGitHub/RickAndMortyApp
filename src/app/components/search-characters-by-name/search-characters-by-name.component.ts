@@ -23,13 +23,14 @@ export class SearchCharactersByNameComponent {
       searcher: ['']
     })
   }
+
   searchCharactersByName() {
-    const searchValue = this.searchForm.get('searcher')?.value; // Obtiene el valor del input
+    const searchValue = this.searchForm.get('searcher')?.value 
     if (searchValue) {
-      this.RickMortyService.getCharactersByName(searchValue).subscribe({
+      this.RickMortyService.getCharacters(1, searchValue).subscribe({
         next: (data: any) => {
           this.characterSearched = data.results;
-          this.emitCharacterSearched.emit(this.characterSearched);
+          this.emitCharacterSearched.emit(this.characterSearched)
           console.log(this.characterSearched)
         },
         error: (error) => {
@@ -40,6 +41,8 @@ export class SearchCharactersByNameComponent {
           this.emitCharacterSearched.emit(this.characterSearched)
         }        
       });
+    } else {
+      window.location.reload()
     }
-  }
+  } 
 }
