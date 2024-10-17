@@ -6,6 +6,7 @@
   (emitCharacterSearched)="updateCharacterList($event)"
   (emitInfoMessage)="characterNotFound($event)">
   </app-search-characters-by-name>
+  
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
       <div class="col" *ngFor="let character of characters">
         <div class="card shadow-lg" [routerLink]="['/characters', character.id]">
@@ -23,6 +24,7 @@
 
 
     <app-paginator 
+      *ngIf="showPaginator" 
       [currentPage]="currentPage" 
       [totalPages]="totalPages" 
       (pageChange)="loadCharacters($event)">
